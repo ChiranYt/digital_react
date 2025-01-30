@@ -20,7 +20,7 @@ const FourthForm = ({
 
       const backendUrl =
         process.env.NODE_ENV === "production"
-          ? "https://backend-digitak-marketing.vercel.app" // Vercel production URL
+          ? "https://digital-marketing-backend-sry7.onrender.com" // Vercel production URL
           : "http://localhost:3000"; // Local development URL
 
       try {
