@@ -6,21 +6,25 @@ require("dotenv").config();
 const app = express();
 const port = process.env.PORT || 3000;
 
-const allowedOrigins = [
-  "https://digital-frontend.onrender.com", // Production
-  "http://localhost:5173", // Development (or your local port)
-];
+const allowedOrigins = process.env.ALLOWED_ORIGINS ? process.env.ALLOWED_ORIGINS.split(',') : ["http://localhost:5173"]; // Default for dev
 
-app.use(
-  cors({
-    origin:"https://digital-frontend.onrender.com" ,
-    methods: ["GET", "POST"], // Explicitly list allowed methods
-    allowedHeaders: ["Content-Type", "Authorization"], // Include any custom headers
-    credentials: true, // If you're using cookies or authorization
-  })
-);
+console.log("Allowed Origins (from env):", allowedOrigins); // Log for debugging
 
-app.options("*", cors()); // Handle preflight requests FIRST
+app.use(cors({
+    origin: function (origin, callback) {
+        if (!origin || allowedOrigins.includes(origin)) { // Check against the array!
+            callback(null, true);
+        } else {
+            console.error("CORS Error: Origin " + origin + " is not allowed."); // Log the rejected origin!
+            callback(new Error("Not allowed by CORS"));
+        }
+    },
+    methods: ["GET", "POST"],
+    allowedHeaders: ["Content-Type", "Authorization"], // Add other headers if needed
+    credentials: true, // If using cookies/auth
+}));
+
+app.options("*", cors()); // Before routes and cors middleware
 
 app.use(express.json());
 // MySQL connection and other logic
