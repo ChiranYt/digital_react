@@ -13,14 +13,7 @@ const allowedOrigins = [
 
 app.use(
   cors({
-    origin: function (origin, callback) {
-      if (!origin || allowedOrigins.includes(origin)) {
-        // Allow requests without origin (e.g., Postman) or from allowed origins
-        callback(null, true);
-      } else {
-        callback(new Error("Not allowed by CORS"));
-      }
-    },
+    origin:"https://digital-frontend.onrender.com" ,
     methods: ["GET", "POST"], // Explicitly list allowed methods
     allowedHeaders: ["Content-Type", "Authorization"], // Include any custom headers
     credentials: true, // If you're using cookies or authorization
