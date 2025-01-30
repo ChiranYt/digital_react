@@ -1,0 +1,297 @@
+.form-div {
+  border-radius: 5px;
+  box-shadow: 0px 7px 8px rgba(0, 0, 0, 0.04), 0px 1px 4px rgba(0, 0, 0, 0.12);
+  padding: 20px;
+  align-items: center;
+  box-sizing: border-box;
+  margin: 0 30px;
+  background-color: #f8f9fa;
+}
+
+.spacing-2 {
+  padding-top: 30px;
+}
+
+.text-div {
+  text-align: center;
+  line-height: 1.5;
+  margin: 10px 0 30px 0;
+}
+
+.text-div h2 {
+  font-size: 23px;
+  font-weight: 500;
+  color: black;
+}
+
+.text-div h3 {
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.button-div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: auto;
+  max-width: 42rem;
+}
+
+.button-div button {
+  border: 1px solid #28a745;
+  border-radius: 2px;
+  color: #155724;
+  box-shadow: 0 7px 6px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.12);
+  background-color: #d4edda;
+  transition: opacity 0.5s;
+  font-size: 1.1rem;
+  padding: 0.6rem 1.25rem;
+  min-height: 36px;
+  margin: 0.5rem;
+}
+
+.button-div button:hover {
+  background-color: #f6fdf8;
+}
+
+.submit-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+}
+
+.submit-div button {
+  border-radius: 3px;
+  background-color: #343a40;
+  border: 2px solid #495057;
+  color: white;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-align: center;
+  font-size: 1.25rem;
+  padding: 0.7rem 1.25rem;
+  min-height: 44px;
+  text-transform: uppercase;
+}
+
+.submit-div button:hover {
+  background-color: #535a61;
+}
+
+.errorMsg {
+  color: black;
+  background-color: bisque;
+  padding: 10px;
+}
+
+.correct-btn {
+  padding: 5px 15px;
+  font-size: 16px;
+  margin: 25px 0;
+  border: none;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px,
+    rgb(209, 213, 219) 0px 0px 0px 1px inset;
+  border-radius: 3px;
+}
+
+.url-input {
+  outline: none;
+  border: 2px solid rgb(192, 191, 191);
+  border-radius: 2px;
+  padding: 5px 15px;
+  width: 350px;
+  margin: 10px 0;
+}
+
+.url-input:focus {
+  border: 2px solid #20c997;
+}
+
+@media (max-width: 768px) {
+  .text-div h2 {
+    font-size: 20px;
+  }
+
+  .text-div h3 {
+    font-size: 16px;
+  }
+
+  .button-div {
+    max-width: 100%;
+    justify-content: space-evenly;
+  }
+
+  .button-div button {
+    width: 100%;
+    font-size: 1rem;
+  }
+
+  .submit-div button {
+    font-size: 1rem;
+    padding: 0.6rem 1.1rem;
+  }
+
+  .errorMsg {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .text-div h2 {
+    font-size: 18px;
+  }
+
+  .button-div button {
+    font-size: 0.9rem;
+    padding: 0.5rem;
+  }
+
+  .submit-div button {
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .errorMsg {
+    font-size: 0.8rem;
+  }
+  .correct-btn {
+    width: 100%;
+    font-size: 1rem;
+  }
+  .url-input {
+    width: 100%;
+  }
+}
+
+.final-form {
+  padding: 0 1rem;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.input-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.input-div {
+  width: 48%;
+}
+
+.input-div label,
+.input-div-number label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.input-div input,
+.input-div-number input {
+  width: 100%;
+  padding: 0.4rem;
+  border: 2px solid #ccc;
+  border-radius: 2px;
+}
+
+.input-div input:focus,
+.input-div-number input:focus {
+  border-color: #28a745;
+  outline: none;
+}
+
+.input-div-number {
+  width: 100%;
+}
+
+.checkbox-div {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
+.checkbox-div input[type="checkbox"] {
+  margin-right: 0.5rem;
+  cursor: pointer;
+  border: 2px solid grey;
+}
+
+.checkbox-div label p {
+  font-size: 15px;
+  color: rgb(105, 105, 105);
+}
+
+.checkbox-div label {
+  cursor: pointer;
+}
+.checkbox-div input[type="checkbox"] {
+  width: 14px;
+  height: 14px;
+  border-radius: 4px;
+  border: 10px solid #636262;
+  transition: background-color 0.3s, border-color 0.3s;
+  position: relative;
+}
+
+.form-star {
+  color: #a13d3d;
+  margin-left: 0.3rem;
+  font-size: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .final-form {
+    padding: 0 5rem;
+  }
+
+  .input-row {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .input-div {
+    width: 100%;
+  }
+
+  .input-div-number input {
+    width: 100%;
+  }
+
+  .checkbox-div {
+    font-size: 1rem;
+  }
+
+  .submit-div button {
+    width: 100%;
+    padding: 1rem 0;
+  }
+  .thankyou {
+    margin: 0 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .submit-div button {
+    font-size: 1rem;
+    padding: 1rem 0;
+  }
+
+  .final-form {
+    padding: 0 1rem;
+  }
+
+  .input-div input,
+  .input-div-number input {
+    font-size: 0.9rem;
+  }
+
+  .input-div label {
+    font-size: 0.9rem;
+  }
+  .form-star {
+    font-size: 1rem;
+  }
+}

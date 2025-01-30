@@ -1,0 +1,26 @@
+@media screen and (max-width: 575px) {
+  .navbar {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.navbar {
+  background-color: #143d59;
+}
+
+.footer {
+  background: #0f2b40;
+  padding: 25px 0 0 0;
+}
+
+.footer a {
+  color: #b0c7d1 !important;
+  margin: 0 10px 0;
+}
+
+.footer p {
+  color: #b0c7d1 !important;
+}

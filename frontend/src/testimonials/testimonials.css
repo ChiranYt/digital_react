@@ -1,0 +1,33 @@
+.gradient-custom {
+  background: linear-gradient(
+    135deg,
+    rgba(20, 61, 89, 0.8) 0%,
+    rgba(36, 91, 133, 0.8) 100%
+  );
+
+  background-blend-mode: screen, color-dodge, overlay, difference, normal;
+  border-radius: 15px;
+}
+.carousel-indicators {
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+}
+
+.testi-main {
+  width: 70%;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 1200px) {
+  .testi-main {
+    width: 100%;
+    padding: 0 30px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .testi-main {
+    padding: 0 15px;
+  }
+}
