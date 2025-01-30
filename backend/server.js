@@ -7,7 +7,7 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 const allowedOrigins = [
-  "https://digital-marketing-site-gamma.vercel.app", // Production
+  "https://digital-frontend.onrender.com", // Production
   "http://localhost:5173", // Development (or your local port)
 ];
 
