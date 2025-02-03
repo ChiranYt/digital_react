@@ -28,14 +28,18 @@ app.options("*", cors()); // Before routes and cors middleware
 
 app.use(express.json());
 // MySQL connection and other logic
-const db = mysql.createConnection({
+const pool = mysql.createPool({
   host: process.env.DB_HOST || "db4free.net",
   user: process.env.DB_USER || "react_dm",
   password: process.env.DB_PASSWORD || "react_dm",
   database: process.env.DB_NAME || "react_dm",
-});
+  waitForConnections: true,
+  connectionLimit: 10, // 🚀 Allows up to 10 simultaneous connections
+  queueLimit: 0
+}).promise();
 
-db.connect((err) => {
+console.log("✅ Connected to MySQL database");
+pool.connect((err) => {
   if (err) {
     console.error("Error connecting to the database:", err);
   } else {
