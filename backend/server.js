@@ -33,30 +33,42 @@ app.options("*", cors()); // Before routes and cors middleware
 
 app.use(express.json());
 // MySQL connection and other logic
-const db = mysql.createConnection({
-  host: process.env.DB_HOST || "db4free.net",
-  user: process.env.DB_USER || "react_dm",
-  password: process.env.DB_PASSWORD || "react_dm",
-  database: process.env.DB_NAME || "react_dm",
-});
 
-db.connect((err) => {
-  if (err) {
-    console.error("❌ Database connection failed:", err);
-  } else {
-    console.log("✅ Connected to MySQL database");
-  }
-});
+// Function to create a MySQL connection
+function createConnection() {
+  const db = mysql.createConnection({
+    host: process.env.DB_HOST || "db4free.net",
+    user: process.env.DB_USER || "react_dm",
+    password: process.env.DB_PASSWORD || "react_dm",
+    database: process.env.DB_NAME || "react_dm",
+    multipleStatements: true, // Allow multiple queries
+  });
 
-// ✅ Reconnect on Connection Loss
-db.on("error", (err) => {
-  console.error("⚠️ Database error:", err);
-  if (err.code === "PROTOCOL_CONNECTION_LOST") {
-    console.log("🔄 Reconnecting to database...");
-    db.connect();
-  }
-});
+  // Handle database connection errors & auto-reconnect
+  db.connect((err) => {
+    if (err) {
+      console.error("❌ Database connection failed:", err);
+      setTimeout(createConnection, 5000); // Retry connection in 5 sec
+    } else {
+      console.log("✅ Connected to MySQL database");
+    }
+  });
 
+  db.on("error", (err) => {
+    console.error("⚠️ Database error:", err);
+    if (err.code === "PROTOCOL_CONNECTION_LOST") {
+      console.log("🔄 Reconnecting to database...");
+      createConnection(); // Reconnect on lost connection
+    } else {
+      throw err;
+    }
+  });
+
+  return db;
+}
+
+// Global database connection instance
+const db = createConnection();
 // Handle POST request for saving buttons
 app.post("/save-buttons", (req, res) => {
   const { ClientNeed } = req.body;
