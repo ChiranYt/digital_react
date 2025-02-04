@@ -6,31 +6,32 @@ require("dotenv").config();
 const app = express();
 const port = process.env.PORT || 3000;
 
-const allowedOrigins = [
-  "https://digital-frontend.onrender.com", // Production
-  "http://localhost:5173", // Development (or your local port)
-];
+const allowedOrigins = process.env.ALLOWED_ORIGINS
+  ? process.env.ALLOWED_ORIGINS.split(",")
+  : ["http://localhost:5173"]; // Default for dev
+
+console.log("Allowed Origins (from env):", allowedOrigins); // Log for debugging
 
 app.use(
   cors({
     origin: function (origin, callback) {
       if (!origin || allowedOrigins.includes(origin)) {
-        // Allow requests without origin (e.g., Postman) or from allowed origins
+        // Check against the array!
         callback(null, true);
       } else {
+        console.error("CORS Error: Origin " + origin + " is not allowed."); // Log the rejected origin!
         callback(new Error("Not allowed by CORS"));
       }
     },
-    methods: ["GET", "POST"], // Explicitly list allowed methods
-    allowedHeaders: ["Content-Type", "Authorization"], // Include any custom headers
-    credentials: true, // If you're using cookies or authorization
+    methods: ["GET", "POST"],
+    allowedHeaders: ["Content-Type", "Authorization"], // Add other headers if needed
+    credentials: true, // If using cookies/auth
   })
 );
 
-app.options("*", cors()); // Handle preflight requests FIRST
+app.options("*", cors()); // Before routes and cors middleware
 
 app.use(express.json());
-
 // MySQL connection and other logic
 const pool = mysql
   .createPool({
@@ -39,27 +40,22 @@ const pool = mysql
     password: process.env.DB_PASSWORD || "react_dm",
     database: process.env.DB_NAME || "react_dm",
     waitForConnections: true,
-    connectionLimit: 5, // 🚀 Allows up to 10 simultaneous connections
+    connectionLimit: 10, // 🚀 Allows up to 10 simultaneous connections
     queueLimit: 0,
-    enableKeepAlive: true, // Keep connection alive
-  keepAliveInitialDelay: 10000,
   })
-  .promise(); // Use promise-based API
+  .promise();
 
 console.log("✅ Connected to MySQL database");
-
-// Test the database connection
-pool
-  .query("SELECT 1 + 1 AS solution")
-  .then(([results]) => {
-    console.log("Connected to the MySQL database");
-  })
-  .catch((err) => {
+pool.connect((err) => {
+  if (err) {
     console.error("Error connecting to the database:", err);
-  });
+  } else {
+    console.log("Connected to the MySQL database");
+  }
+});
 
 // Handle POST request for saving buttons
-app.post("/save-buttons", async (req, res) => {
+app.post("/save-buttons", (req, res) => {
   const { ClientNeed } = req.body;
 
   if (!ClientNeed) {
@@ -69,19 +65,19 @@ app.post("/save-buttons", async (req, res) => {
   const sql = "INSERT INTO form1_client_need (client_need) VALUES (?)";
   const values = [ClientNeed]; // Will insert the labels as a string
 
-  try {
-    const [result] = await pool.query(sql, values);
+  db.query(sql, values, (err, result) => {
+    if (err) {
+      console.error("Error during database query:", err);
+      return res
+        .status(500)
+        .json({ message: "Failed to save buttons", error: err.message });
+    }
     res.status(200).json({ message: "Buttons saved successfully!" });
-  } catch (err) {
-    console.error("Error during database query:", err);
-    res
-      .status(500)
-      .json({ message: "Failed to save buttons", error: err.message });
-  }
+  });
 });
 
 // Handle POST request for saving goals
-app.post("/save-goals", async (req, res) => {
+app.post("/save-goals", (req, res) => {
   const { ClientGoal } = req.body;
 
   if (!ClientGoal) {
@@ -91,19 +87,19 @@ app.post("/save-goals", async (req, res) => {
   const sql = "INSERT INTO form2_client_goal (client_goal) VALUES (?)";
   const values = [ClientGoal]; // Insert the goal labels as a string
 
-  try {
-    const [result] = await pool.query(sql, values);
+  db.query(sql, values, (err, result) => {
+    if (err) {
+      console.error("Error during database query:", err);
+      return res
+        .status(500)
+        .json({ message: "Failed to save goals", error: err.message });
+    }
     res.status(200).json({ message: "Goals saved successfully!" });
-  } catch (err) {
-    console.error("Error during database query:", err);
-    res
-      .status(500)
-      .json({ message: "Failed to save goals", error: err.message });
-  }
+  });
 });
 
 // Handle POST request for saving budget
-app.post("/save-budget", async (req, res) => {
+app.post("/save-budget", (req, res) => {
   const { ClientBudget } = req.body;
 
   if (!ClientBudget) {
@@ -113,19 +109,19 @@ app.post("/save-budget", async (req, res) => {
   const sql = "INSERT INTO form3_client_budget (client_budget) VALUES (?)";
   const values = [ClientBudget]; // Insert the selected budget as a string
 
-  try {
-    const [result] = await pool.query(sql, values);
+  db.query(sql, values, (err, result) => {
+    if (err) {
+      console.error("Error during database query:", err);
+      return res
+        .status(500)
+        .json({ message: "Failed to save budget", error: err.message });
+    }
     res.status(200).json({ message: "Budget saved successfully!" });
-  } catch (err) {
-    console.error("Error during database query:", err);
-    res
-      .status(500)
-      .json({ message: "Failed to save budget", error: err.message });
-  }
+  });
 });
 
 // Handle POST request for saving website URL
-app.post("/save-website-url", async (req, res) => {
+app.post("/save-website-url", (req, res) => {
   const { client_site_url } = req.body;
 
   if (!client_site_url) {
@@ -135,19 +131,19 @@ app.post("/save-website-url", async (req, res) => {
   const sql = "INSERT INTO form4_client_site (client_site_url) VALUES (?)";
   const values = [client_site_url]; // Insert the website URL
 
-  try {
-    const [result] = await pool.query(sql, values);
+  db.query(sql, values, (err, result) => {
+    if (err) {
+      console.error("Error during database query:", err);
+      return res
+        .status(500)
+        .json({ message: "Failed to save website URL", error: err.message });
+    }
     res.status(200).json({ message: "Website URL saved successfully!" });
-  } catch (err) {
-    console.error("Error during database query:", err);
-    res
-      .status(500)
-      .json({ message: "Failed to save website URL", error: err.message });
-  }
+  });
 });
 
 // Handle POST request for saving personal information
-app.post("/save-personal-info", async (req, res) => {
+app.post("/save-personal-info", (req, res) => {
   const { name, email, phone } = req.body;
 
   if (!name || !email || !phone) {
@@ -156,13 +152,15 @@ app.post("/save-personal-info", async (req, res) => {
 
   const query =
     "INSERT INTO form5_client_personal_info (name, email, phone) VALUES (?, ?, ?)";
-  try {
-    const [result] = await pool.query(query, [name, email, phone]);
+  db.query(query, [name, email, phone], (err, results) => {
+    if (err) {
+      console.error("Error inserting data:", err);
+      return res
+        .status(500)
+        .send({ error: "An error occurred while saving the data." });
+    }
     res.status(200).send({ message: "Data saved successfully!" });
-  } catch (err) {
-    console.error("Error inserting data:", err);
-    res.status(500).send({ error: "An error occurred while saving the data." });
-  }
+  });
 });
 
 app.listen(port, () => {
