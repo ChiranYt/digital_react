@@ -6,12 +6,10 @@ require("dotenv").config();
 const app = express();
 const port = process.env.PORT || 3000;
 
-// ✅ Allowed origins from environment variables
+// ✅ Allowed Origins (CORS)
 const allowedOrigins = process.env.ALLOWED_ORIGINS
   ? process.env.ALLOWED_ORIGINS.split(",")
   : ["http://localhost:5173"];
-
-console.log("Allowed Origins:", allowedOrigins);
 
 app.use(
   cors({
@@ -31,43 +29,33 @@ app.use(
 
 app.use(express.json());
 
-// ✅ MySQL Connection Pool (Production Optimized)
-const pool = mysql
-  .createPool({
-    host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME,
-    waitForConnections: true,
-    connectionLimit: 10, // Limits to 10 connections to avoid overload
-    queueLimit: 0,
-    enableKeepAlive: true, // Prevents idle connection timeout
-    keepAliveInitialDelay: 10000, // 10s delay before keep-alive
-  })
-  .promise();
+// ✅ MySQL Connection Pool
+const pool = mysql.createPool({
+  host: process.env.DB_HOST || "db4free.net",
+  user: process.env.DB_USER || "react_dm",
+  password: process.env.DB_PASSWORD || "react_dm",
+  database: process.env.DB_NAME || "react_dm",
+  waitForConnections: true,
+  connectionLimit: 10,
+  queueLimit: 0,
+  enableKeepAlive: true, // Prevent idle connection timeout
+  keepAliveInitialDelay: 10000, // 10s delay before keep-alive
+}).promise();
 
 console.log("✅ Connected to MySQL Database");
 
-// 🔄 Auto-reconnect in case of database errors
-pool.on("error", (err) => {
-  console.error("MySQL Pool Error:", err);
-  if (err.code === "PROTOCOL_CONNECTION_LOST") {
-    console.log("Reconnecting to the database...");
-  }
-});
-
-// ✅ Function to handle database queries safely
+// ✅ Universal function to handle DB queries safely
 const executeQuery = async (query, values, res, successMessage) => {
   let connection;
   try {
-    connection = await pool.getConnection();
+    connection = await pool.getConnection(); // Get fresh connection
     await connection.query(query, values);
     res.status(200).json({ message: successMessage });
   } catch (err) {
     console.error("Database Error:", err);
     res.status(500).json({ message: "Database operation failed", error: err.message });
   } finally {
-    if (connection) connection.release(); // Always release the connection
+    if (connection) connection.release(); // Release connection
   }
 };
 
