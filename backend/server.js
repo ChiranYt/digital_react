@@ -41,6 +41,8 @@ const pool = mysql
     waitForConnections: true,
     connectionLimit: 10, // 🚀 Allows up to 10 simultaneous connections
     queueLimit: 0,
+    enableKeepAlive: true, // Keep connection alive
+  keepAliveInitialDelay: 10000,
   })
   .promise(); // Use promise-based API
 
