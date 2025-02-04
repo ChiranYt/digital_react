@@ -39,7 +39,7 @@ const pool = mysql
     password: process.env.DB_PASSWORD || "react_dm",
     database: process.env.DB_NAME || "react_dm",
     waitForConnections: true,
-    connectionLimit: 10, // 🚀 Allows up to 10 simultaneous connections
+    connectionLimit: 5, // 🚀 Allows up to 10 simultaneous connections
     queueLimit: 0,
     enableKeepAlive: true, // Keep connection alive
   keepAliveInitialDelay: 10000,
