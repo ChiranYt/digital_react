@@ -7,10 +7,11 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 // ✅ Allowed Origins (CORS)
-const allowedOrigins = [
-  "https://digital-frontend.onrender.com", // ✅ Add your actual frontend URL
-  "http://localhost:5173", // ✅ Keep localhost for development
-];
+const allowedOrigins = process.env.ALLOWED_ORIGINS
+  ? process.env.ALLOWED_ORIGINS.split(",")
+  : ["http://localhost:5173"]; // Default for dev
+
+console.log("Allowed Origins (from env):", allowedOrigins);
 
 app.use(
   cors({
