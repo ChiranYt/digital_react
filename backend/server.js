@@ -178,6 +178,8 @@ app.post("/save-personal-info", (req, res) => {
   });
 });
 
+app.get('/keepalive', (req, res) => res.send('OK')); // Simple route
+
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
