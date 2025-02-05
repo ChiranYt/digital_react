@@ -32,6 +32,9 @@ app.use(
 app.options("*", cors()); // Before routes and cors middleware
 
 app.use(express.json());
+
+app.get('/keepalive', (req, res) => res.send('OK')); // Simple route
+
 // MySQL connection and other logic
 
 // Function to create a MySQL connection
@@ -178,7 +181,7 @@ app.post("/save-personal-info", (req, res) => {
   });
 });
 
-app.get('/keepalive', (req, res) => res.send('OK')); // Simple route
+
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
