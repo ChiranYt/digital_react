@@ -46,6 +46,7 @@ const ThankYou = ({ formStyle }) => {
             borderRadius: "5px",
             cursor: "pointer",
             transition: "background-color 0.3s",
+            textDecoration: "none",
           }}
           onMouseOver={(e) => (e.target.style.backgroundColor = "#103a4d")}
           onMouseOut={(e) => (e.target.style.backgroundColor = "#124F69")}

@@ -13,8 +13,8 @@ const App = () => {
       <Header />
       <MarketingHead />
       <Goals />
-      <Testiminials />
       <You />
+      <Testiminials />
       <Footer />
     </div>
   );

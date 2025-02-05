@@ -4,7 +4,6 @@ import TestiItems from "./TestiItems";
 const Testiminials = () => {
   return (
     <>
-      <div className="spacing"></div>
       <TestiItems />
     </>
   );

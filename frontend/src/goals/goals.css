@@ -1,165 +1,289 @@
-.goals-heading {
+.digital-marketing {
+  background-color: #2c3e50; /* Dark background for high contrast */
+  padding: 100px 20px;
   text-align: center;
-  margin: 0 30px;
+  color: #ffffff;
+  position: relative;
+  overflow: hidden;
 }
 
-.goals-heading h2 {
-  font-weight: 900;
-  font-size: 50px;
-  color: #1b1f3b;
+.digital-marketing .service-card::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(30deg); /* Rotated hexagonal shape */
+  width: 160px; /* Adjust size as needed */
+  height: 140px; /* Adjust size as needed */
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.07),
+    rgba(255, 255, 255, 0.02)
+  );
+  clip-path: polygon(
+    50% 0%,
+    100% 25%,
+    100% 75%,
+    50% 100%,
+    0% 75%,
+    0% 25%
+  ); /* Hexagon shape */
+  z-index: -1;
+  pointer-events: none;
+  animation: hexagonPulse 6s infinite alternate ease-in-out;
 }
 
-.goals-heading h3 {
-  font-size: 1.4rem;
+/* Subtle animation to create an eye-catching effect */
+@keyframes hexagonPulse {
+  0% {
+    transform: translate(-50%, -50%) scale(1) rotate(30deg);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.2) rotate(30deg);
+    opacity: 0.4;
+  }
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.section-title {
+  font-size: 3rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #ffffff;
+  margin-bottom: 40px;
+  position: relative;
+}
+
+.section-title::before {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  width: 70px;
+  height: 3px;
+  background-color: #ff7300; /* Bold orange underline */
+  transform: translateX(-50%);
+}
+
+.section-description {
+  font-size: 1.2rem;
+  color: #f0f0f0;
+  margin-bottom: 60px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.7;
   font-weight: 400;
-  padding-top: 15px;
 }
 
-.goalbody-div {
-  margin: auto;
-  width: 100%;
-  padding: 0 1rem;
-  max-width: 80em;
-  display: block;
-  unicode-bidi: isolate;
-}
-
-.goalbody-div ul {
-  display: block;
-  list-style-type: none;
-  margin-block-start: 1em;
-  margin-block-end: 1em;
-  margin-inline-start: 0px;
-  margin-inline-end: 0px;
-  padding-inline-start: 40px;
-  unicode-bidi: isolate;
-  margin-top: 0.75rem;
-  max-width: 75rem;
-  max-width: var(--cards-max-width-default);
-  margin: auto;
+.services-wrapper {
   display: flex;
+  justify-content: space-between;
+  gap: 30px;
   flex-wrap: wrap;
-  justify-content: center;
-  position: relative;
-  list-style: none;
-  padding: 0;
-  margin: 0;
+  margin-top: 60px;
 }
 
-.goalbody-ul li {
-  min-width: 250px;
-  flex: 33.3333% 0;
-  padding: 0.75rem;
-  flex-grow: 0;
-  outline: 0;
-  display: list-item;
-  unicode-bidi: isolate;
-}
-
-.GB-inner {
-  padding: 1rem;
-  height: 100%;
-  border-radius: 5px;
-  display: flex;
-  flex-direction: column;
-  color: black;
-  position: relative;
-  box-shadow: 0px 7px 8px rgba(0, 0, 0, 0.04), 0px 1px 4px rgba(0, 0, 0, 0.12);
-  background-color: rgb(20, 61, 89);
-}
-
-.GB-in-inner {
+.service-card {
+  background: #34495e; /* Darker card background */
+  padding: 40px 30px;
+  border-radius: 15px;
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
   text-align: center;
-  padding: 1.25rem 0.5rem 1rem 0.5rem;
-  font-family: "Open Sans", "system-ui", "Trebuchet MS", "Arial", "Helvetica",
-    "Verdana";
-  color: white;
-}
-
-.GB-in-inner h4 {
-  display: block;
-  margin-block-start: 1.33em;
-  margin-block-end: 1.33em;
-  margin-inline-start: 0px;
-  margin-inline-end: 0px;
-  font-weight: bold;
-  unicode-bidi: isolate;
-  font-size: 1rem;
-}
-
-.GB-in-inner h5 {
-  font-size: 1rem;
-  font-weight: 400;
-  margin-top: 0.5rem;
-  padding: 0 1rem;
-  line-height: 1.55;
-}
-
-.GB-img-div {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-}
-
-.GB-img-div2 {
-  max-width: 60%;
-  width: 100%;
-  margin: auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 1rem 0;
-}
-
-.GB-img-div2 div {
+  flex: 1 1 calc(33% - 30px);
   position: relative;
-  width: 100%;
-  text-align: left;
+  overflow: hidden;
+  cursor: pointer;
 }
 
-.GB-img-div2 div img {
-  left: 0;
-  top: 0;
-  width: 100%;
-  overflow-clip-margin: content-box;
-  overflow: clip;
+.service-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 30px 45px rgba(0, 0, 0, 0.2);
 }
 
-@media (max-width: 1200px) {
-  .goalbody-ul li {
-    flex: 1 1 45%;
+.service-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #ff7300; /* Orange color for titles */
+  margin-bottom: 25px;
+  text-transform: uppercase;
+}
+
+.service-description {
+  font-size: 1rem;
+  color: #ecf0f1; /* Light text color for descriptions */
+  line-height: 1.7;
+}
+
+.service-icon {
+  width: 90px;
+  height: 90px;
+  margin-bottom: 25px;
+  background-color: #ff7300; /* Bold icon background */
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: -45px; /* Slightly above the card */
+  left: 50%;
+  transform: translateX(-50%);
+  transition: background-color 0.3s ease;
+}
+
+.service-icon img {
+  width: 50px;
+  height: 50px;
+  transition: transform 0.3s ease;
+}
+
+.service-icon:hover img {
+  transform: scale(1.15); /* Slight zoom effect on hover */
+}
+
+@media (max-width: 768px) {
+  .services-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .service-card {
+    flex: 1 1 100%;
+    margin-bottom: 40px;
+  }
+
+  .service-icon {
+    width: 70px;
+    height: 70px;
+    top: -35px;
+  }
+
+  .service-title {
+    font-size: 1.6rem;
+  }
+
+  .section-title {
+    font-size: 2.4rem;
+  }
+}
+
+.bubble {
+  position: absolute;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.2); /* Adjust color and opacity */
+  animation: float 6s linear infinite; /* Adjust duration */
+  z-index: 0; /* Place bubbles behind the content */
+}
+
+/* Example bubble positions and sizes (customize these) */
+.bubble:nth-child(1) {
+  width: 20px;
+  height: 20px;
+  left: 10%;
+  top: 20%;
+  animation-delay: 0s;
+}
+
+.bubble:nth-child(2) {
+  width: 30px;
+  height: 30px;
+  left: 30%;
+  top: 50%;
+  animation-delay: 2s;
+}
+
+.bubble:nth-child(3) {
+  width: 15px;
+  height: 15px;
+  left: 70%;
+  top: 10%;
+  animation-delay: 4s;
+}
+
+/* Add more bubbles as needed - customize size, position, and delay */
+.bubble:nth-child(4) {
+  width: 25px;
+  height: 25px;
+  left: 5%;
+  top: 70%;
+  animation-delay: 1.5s;
+}
+.bubble:nth-child(5) {
+  width: 18px;
+  height: 18px;
+  left: 60%;
+  top: 30%;
+  animation-delay: 3s;
+}
+.bubble:nth-child(6) {
+  width: 35px;
+  height: 35px;
+  left: 90%;
+  top: 45%;
+  animation-delay: 0.5s;
+}
+.bubble:nth-child(7) {
+  width: 12px;
+  height: 12px;
+  left: 20%;
+  top: 65%;
+  animation-delay: 2.5s;
+}
+.bubble:nth-child(8) {
+  width: 22px;
+  height: 22px;
+  left: 75%;
+  top: 15%;
+  animation-delay: 4s;
+}
+.bubble:nth-child(9) {
+  width: 28px;
+  height: 28px;
+  left: 45%;
+  top: 80%;
+  animation-delay: 1s;
+}
+.bubble:nth-child(10) {
+  width: 16px;
+  height: 16px;
+  left: 95%;
+  top: 25%;
+  animation-delay: 3.5s;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0);
+    opacity: 0; /* Start transparent */
+  }
+  25% {
+    opacity: 1; /* Fade in */
+  }
+  100% {
+    transform: translateY(-100vh); /* Move bubbles to the top */
+    opacity: 0; /* Fade out */
   }
 }
 
 @media (max-width: 768px) {
-  .goalbody-ul li {
-    flex: 1 1 100%;
-  }
-}
+  /* ... (your existing media query styles) */
 
-@media screen and (max-width: 1024px) {
-  .goals-heading h2 {
-    font-size: 40px;
-  }
-}
-
-@media screen and (max-width: 767px) {
-  .goals-heading h2 {
-    font-size: 30px;
+  .bubble {
+    /* Adjust bubble sizes on smaller screens */
+    width: 15px;
+    height: 15px;
   }
 
-  .goals-heading h3 {
-    font-size: 1rem;
-    padding-top: 10px;
-  }
-  .goals-br {
-    display: none;
-  }
-}
-
-@media screen and (max-width: 500px) {
-  .goals-heading h2 {
-    font-size: 25px;
+  .bubble:nth-child(2) {
+    width: 20px;
+    height: 20px;
   }
 }

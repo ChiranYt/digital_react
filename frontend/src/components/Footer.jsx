@@ -3,7 +3,6 @@ import React from "react";
 const Footer = () => {
   return (
     <>
-      <div className="spacing"></div>
       <footer className="footer">
         <div className="container">
           <div className="row">

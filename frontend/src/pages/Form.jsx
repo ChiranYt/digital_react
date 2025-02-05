@@ -56,15 +56,33 @@ const Form = () => {
   };
 
   const buttonStyle = (isActive) => ({
-    backgroundColor: isActive ? "#28a745" : "#d4edda",
-    color: isActive ? "#ffffff" : "#155724",
-    border: `1px solid ${isActive ? "#1b5e20" : "#28a745"}`,
-    transition: "opacity 0.5s",
+    backgroundColor: isActive ? "#e67e22" : "#FFC04D", // More subtle active orange, lighter inactive
+    color: isActive ? "#ffffff" : "#8B4513", // Better contrast on inactive
+    border: "none", // No border
+    transition: "transform 0.2s, box-shadow 0.2s, background-color 0.3s", // More transitions
     fontSize: "1.1rem",
-    padding: "0.6rem 1.25rem",
-    minHeight: "36px",
+    padding: "0.7rem 1.5rem", // Adjusted padding
+    minHeight: "40px", // Adjusted min-height
     margin: "0.5rem",
-    borderRadius: "2px",
+    borderRadius: "5px", // More rounded
+    boxShadow: isActive
+      ? "0 2px 5px rgba(0, 0, 0, 0.1)"
+      : "0 1px 3px rgba(0, 0, 0, 0.1)", // Subtle shadows
+    cursor: "pointer",
+    ":hover": {
+      transform: "scale(1.02)",
+      boxShadow: "0 3px 7px rgba(0, 0, 0, 0.15)",
+      backgroundColor: isActive ? "#d86200" : "#FFAD42", // Darker hover color
+    },
+    ":active": {
+      transform: "translateY(1px)",
+      boxShadow: "0 1px 3px rgba(0, 0, 0, 0.1)", // Reset shadow
+      backgroundColor: "#CC5A00", // Even darker on click
+    },
+    ":focus": {
+      outline: "none",
+      boxShadow: "0 0 0 0.2rem rgba(255, 115, 0, 0.5)", // Orange focus ring
+    },
   });
 
   return (
