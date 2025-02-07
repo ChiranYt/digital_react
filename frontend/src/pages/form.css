@@ -63,7 +63,7 @@
 
 .submit-div button {
   border-radius: 8px; /* More rounded corners */
-  background-color: #D95E00; /* Your brand orange */
+  background-color: #008c4a; /* Your brand orange */
   border: none;
   color: white;
   font-weight: 700;
@@ -83,19 +83,19 @@
 }
 
 .submit-div button:hover {
-  background-color: #e67e22; /* Darker orange on hover */
+  background-color: #00703a; /* Darker orange on hover */
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* More pronounced shadow on hover */
   transform: translateY(-2px); /* Lift up a bit */
 }
 
 .submit-div button:active {
-  background-color: #d86200; /* Even darker orange on click */
+  background-color: #005e30; /* Even darker orange on click */
   transform: translateY(1px); /* Push down effect */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Reset shadow on click */
 }
 
 .submit-div button:disabled {
-  background-color: #ffc04d; /* Lighter orange when disabled */
+  background-color: #a0a0a0; /* Lighter orange when disabled */
   color: #a65600;
   cursor: default;
   box-shadow: none;
