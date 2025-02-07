@@ -57,7 +57,7 @@ const Form = () => {
 
   const buttonStyle = (isActive) => ({
     backgroundColor: isActive ? "#e67e22" : "#FFC04D", // More subtle active orange, lighter inactive
-    color: isActive ? "#ffffff" : "#8B4513", // Better contrast on inactive
+    color: isActive ? "#ffffff" : "rgb(50, 25, 0)", // Better contrast on inactive
     border: "none", // No border
     transition: "transform 0.2s, box-shadow 0.2s, background-color 0.3s", // More transitions
     fontSize: "1.1rem",
