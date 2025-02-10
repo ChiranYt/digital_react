@@ -91,10 +91,5 @@
   object-fit: cover;
 }
 
-@media (max-width: 576px) {
-  .logo-img {
-    width: 100%;
-    height: auto;
-  }
-}
+
 
