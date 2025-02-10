@@ -32,20 +32,13 @@ const Header = () => {
       {isNavbarVisible && (
         <nav className="navbar navbar-expand-sm">
           <a className="navbar-brand" href="/">
-             <picture>
-    {/* WebP Image (Loads on Modern Browsers) */}
-    <source srcSet="https://adsyzygy.com/img/webp/logo.webp" type="image/webp" />
-    
-    {/* JPEG Fallback (For Old Browsers) */}
-    <img
+      <img
       src="https://adsyzygy.com/img/webp/logo.jpg"
       alt="Logo"
       width="150"
       height="50"
       className="logo-img"
-      style={{ width: "150px", height: "50px", objectFit: "cover" }}
     />
-  </picture>
           </a>
           <div id="navbarNav">
             <ul className="navbar-nav">
