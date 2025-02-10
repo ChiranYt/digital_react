@@ -2,22 +2,46 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="https://adsyzygy.com/img/favicon.ico" />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="https://adsyzygy.com/img/favicon.ico"
+    />
+    <meta
+      name="description"
+      content="Adsyzygy offers top-notch digital marketing services to grow your business online. SEO, social media, and more!"
+    />
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Adsyzygy | Digital Marketing</title>
+    <!-- Preload FontAwesome & MDB (Non-Critical) -->
     <link
+      rel="preload"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-      rel="stylesheet"
+      as="style"
     />
-    <meta name="description" content="Adsyzygy offers top-notch digital marketing services to grow your business online. SEO, social media, and more!">
-
     <link
+      rel="preload"
       href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.0/mdb.min.css"
+      as="style"
+    />
+
+    <!-- Load CSS Asynchronously -->
+    <link
       rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      media="print"
+      onload="this.onload=null;this.media='all';"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.0/mdb.min.css"
+      media="print"
+      onload="this.onload=null;this.media='all';"
     />
   </head>
   <body>
     <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
+    <script type="module" src="/src/main.jsx" defer></script>
   </body>
 </html>
