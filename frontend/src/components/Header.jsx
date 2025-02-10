@@ -35,7 +35,7 @@ const Header = () => {
             <img
               src="https://adsyzygy.com/img/webp/logo.jpg"
               alt="Logo"
-                style={{ width: "200", height: "50", objectFit: "cover" }}
+                style={{ width: "100%", height: "auto", objectFit: "cover" }}
             />
           </a>
           <div id="navbarNav">
