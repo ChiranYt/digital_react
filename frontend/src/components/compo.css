@@ -84,3 +84,17 @@
 .footer p {
   color: #b0c7d1 !important;
 }
+
+.logo-img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+@media (max-width: 576px) {
+  .logo-img {
+    width: 100%;
+    height: auto;
+  }
+}
+
