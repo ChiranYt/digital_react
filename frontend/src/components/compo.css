@@ -86,9 +86,24 @@
 }
 
 .logo-img {
-  width: 100%;
-  height: auto;
+  width: 150px;
+  height: 50px;
   object-fit: cover;
+}
+
+/* Adjust logo size on smaller screens */
+@media (max-width: 768px) {
+  .logo-img {
+    width: 120px;  /* Reduce width for tablets */
+    height: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo-img {
+    width: 100px;  /* Reduce width for mobile */
+    height: auto;
+  }
 }
 
 
