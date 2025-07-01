@@ -42,6 +42,11 @@ const Header = () => {
           </a>
           <div id="navbarNav">
             <ul className="navbar-nav">
+               <li className="nav-item">
+                <a className="nav-link" href="https://your-main-site.com">
+                  Home
+                </a>
+              </li>
               <li className="nav-item">
                 <a className="nav-link" href="">
                   Digital Marketing
