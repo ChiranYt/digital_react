@@ -43,7 +43,7 @@ const Header = () => {
           <div id="navbarNav">
             <ul className="navbar-nav">
                <li className="nav-item">
-                <a className="nav-link" href="https://your-main-site.com">
+                <a className="nav-link" href="https://adsyzygy.com/">
                   Home
                 </a>
               </li>
