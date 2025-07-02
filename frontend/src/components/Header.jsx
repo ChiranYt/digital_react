@@ -32,15 +32,16 @@ const Header = () => {
       {isNavbarVisible && (
         <nav className="navbar navbar-expand-sm">
           <a className="navbar-brand" href="/">
-    <a href="https://adsyzygy.com/">
+    
   <img
     src="https://adsyzygy.com/img/webp/logo.jpg"
     alt="Logo"
     width="150"
     height="50"
     class="logo-img"
+    onclick="window.location.href='https://adsyzygy.com/'"
   />
-</a>
+
 
           </a>
           <div id="navbarNav">
