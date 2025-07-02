@@ -39,7 +39,8 @@ const Header = () => {
     width="150"
     height="50"
     class="logo-img"
-    onclick="window.open('https://adsyzygy.com/', '_blank')"
+    style={{ cursor: "pointer" }}
+  onClick={() => window.open("https://adsyzygy.com/", "_blank")}
   />
 
 
