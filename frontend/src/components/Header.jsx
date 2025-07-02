@@ -39,7 +39,7 @@ const Header = () => {
     width="150"
     height="50"
     class="logo-img"
-    onclick="window.location.href='https://adsyzygy.com/'"
+    onclick="window.open('https://adsyzygy.com/', '_blank')"
   />
 
 
