@@ -32,21 +32,19 @@ const Header = () => {
       {isNavbarVisible && (
         <nav className="navbar navbar-expand-sm">
           <a className="navbar-brand" href="/">
-      <img
-      src="https://adsyzygy.com/img/webp/logo.jpg"
-      alt="Logo"
-      width="150"
-      height="50"
-      className="logo-img"
-    />
+    <a href="https://adsyzygy.com/">
+  <img
+    src="https://adsyzygy.com/img/webp/logo.jpg"
+    alt="Logo"
+    width="150"
+    height="50"
+    class="logo-img"
+  />
+</a>
+
           </a>
           <div id="navbarNav">
             <ul className="navbar-nav">
-               <li className="nav-item">
-                <a className="nav-link" href="https://adsyzygy.com/">
-                  Home
-                </a>
-              </li>
               <li className="nav-item">
                 <a className="nav-link" href="">
                   Digital Marketing
