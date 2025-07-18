@@ -60,7 +60,7 @@ const YouItem = () => {
             </div>
           </div>
 
-          <a href="" className="cta-btn">
+          <a href="#" className="cta-btn">
             Let's Connect
           </a>
         </div>
