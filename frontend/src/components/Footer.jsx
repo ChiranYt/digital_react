@@ -11,11 +11,11 @@ const Footer = () => {
             </div>
             <div className="col-md-6">
               <p className="text-right">
-                <a href="https://adsyzygy.com/privacy"  rel="noopener noreferrer">
+                <a href="https://adsyzygy.com/privacy" target="_blank" rel="noopener noreferrer">
                   Privacy Policy
                 </a>{" "}
                 |
-                <a href="https://adsyzygy.com/terms-and-conditions"  rel="noopener noreferrer">
+                <a href="https://adsyzygy.com/terms-and-conditions" target="_blank" rel="noopener noreferrer">
                   Terms & Conditions
                 </a>
               </p>
