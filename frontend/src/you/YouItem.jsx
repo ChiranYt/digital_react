@@ -19,7 +19,7 @@ const YouItem = () => {
             <a href="#" className="btn">
               Get Started
             </a>
-            <a href="#" className="btn btn-outline">
+            <a href="https://adsyzygy.com/contact" target="_blank" className="btn btn-outline">
               Learn More
             </a>
           </div>
