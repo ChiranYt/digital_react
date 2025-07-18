@@ -36,7 +36,7 @@ const ThankYou = ({ formStyle }) => {
           you shortly.
         </p>
         <a
-          href="https://adsyzygy.in/"
+          href="https://adsyzygy.com/"
           style={{
             padding: "10px 20px",
             fontSize: "1rem",
