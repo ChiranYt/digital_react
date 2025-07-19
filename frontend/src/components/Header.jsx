@@ -15,6 +15,21 @@ const Header = () => {
     setTimeout(() => setIsVisible(false), 500); // Matches the duration of the transition
   };
 
+   useEffect(() => {
+    var Tawk_API = Tawk_API || {};
+    var Tawk_LoadStart = new Date();
+
+    (function () {
+      var s1 = document.createElement("script");
+      s1.async = true;
+      s1.src = "https://embed.tawk.to/6375ce5bdaff0e1306d7da5e/1gi22s6j7";
+      s1.charset = "UTF-8";
+      s1.setAttribute("crossorigin", "*");
+      var s0 = document.getElementsByTagName("script")[0];
+      s0.parentNode.insertBefore(s1, s0);
+    })();
+  }, []);
+
   return (
     <>
       {/* Announcement Bar */}
