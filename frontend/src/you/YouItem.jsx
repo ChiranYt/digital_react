@@ -19,9 +19,16 @@ const YouItem = () => {
             <a href="#" className="btn">
               Get Started
             </a>
-            <a href="https://adsyzygy.com/contact" target="_blank" className="btn btn-outline" rel="noopener noreferrer">
-              Learn More
-            </a>
+           <a
+  href="https://adsyzygy.com/contact"
+  target="_blank"
+  className="btn btn-outline"
+  rel="noopener noreferrer"
+  aria-label="Learn more about contacting Adsyzygy"
+>
+  Learn More
+</a>
+
           </div>
         </div>
       </section>
