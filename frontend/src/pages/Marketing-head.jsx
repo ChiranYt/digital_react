@@ -7,7 +7,7 @@ const MarketingHead = () => {
     <>
       <div className="marketing-bg">
         <div className="spacing"></div>
-        <div className="heading-div">
+        <div className="heading-div" id="m-head">
           <h1 className="main-heading">
             <span>
               Get Your Free Marketing Plan
