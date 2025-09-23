@@ -46,20 +46,23 @@ const Header = () => {
       {/* Navbar */}
       {isNavbarVisible && (
         <nav className="navbar navbar-expand-sm">
-          <a className="navbar-brand" href="/">
-    
+ <a
+  className="navbar-brand"
+  href="https://adsyzygy.com/"
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="Visit Adsyzygy homepage"
+>
   <img
     src="https://adsyzygy.com/img/webp/logo.jpg"
-    alt="Logo"
+    alt="Adsyzygy Logo"
     width="150"
     height="50"
-    class="logo-img"
+    className="logo-img"
     style={{ cursor: "pointer" }}
-  onClick={() => window.open("https://adsyzygy.com/", "_blank")}
   />
+</a>
 
-
-          </a>
           <div id="navbarNav">
             <ul className="navbar-nav">
               <li className="nav-item">
