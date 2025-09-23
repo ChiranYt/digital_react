@@ -16,7 +16,7 @@ const YouItem = () => {
             fast-evolving digital world.
           </p>
           <div className="buttons">
-            <a href="#" className="btn">
+            <a href="#m-head" className="btn">
               Get Started
             </a>
            <a
@@ -67,7 +67,7 @@ const YouItem = () => {
             </div>
           </div>
 
-          <a href="#" className="cta-btn">
+          <a href="#m-head" className="cta-btn">
             Let's Connect
           </a>
         </div>
