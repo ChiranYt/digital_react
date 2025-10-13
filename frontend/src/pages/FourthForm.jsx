@@ -1,88 +1,75 @@
 import React from "react";
 
 const FourthForm = ({
-  setErrorMessage,
   formStyle,
-  handleCorrectButtonClick,
   websiteURL,
   setWebsiteURL,
-  errorMessage,
+  handleCorrectButtonClick,
+  setErrorMessage,
   setFourthFormSubmitted,
+  setFormData,
+  errorMessage,
 }) => {
-  const handleFormSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-
     if (!websiteURL) {
       setErrorMessage("Please provide your website URL.");
-    } else {
-      setErrorMessage("");
-      setFourthFormSubmitted(true);
-
-      const backendUrl =
-        process.env.NODE_ENV === "production"
-          ? "https://digital-marketing-backend-sry7.onrender.com" // Vercel production URL
-          : "http://localhost:3000"; // Local development URL
-
-      try {
-        const response = await fetch(`${backendUrl}/save-website-url`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ client_site_url: websiteURL }), // Send URL to backend
-        });
-
-        if (response.ok) {
-        } else {
-          alert("Failed to save URL.");
-        }
-      } catch (error) {
-        console.error("Error:", error);
-        alert("An error occurred while saving the URL.");
-      }
+      return;
     }
+
+    setFormData((prev) => ({ ...prev, clientSiteURL: websiteURL }));
+    setFourthFormSubmitted(true);
+    setErrorMessage("");
   };
 
   return (
-    <form id="proposal-form" onSubmit={handleFormSubmit} style={formStyle}>
+    <form onSubmit={handleSubmit} style={formStyle}>
       <div className="form-div">
-        <div>
-          <div className="text-div">
-            <h2>Are you from 12.com?</h2>
-            <div>
-              <button
-                type="button"
-                className="correct-btn"
-                onClick={handleCorrectButtonClick}
-              >
-                Yes, that's correct!
-              </button>
-            </div>
-            <h3>If not, please let us know your company website URL:</h3>
-            <div>
-              <input
-                type="text"
-                className="url-input"
-                placeholder="mywebsite.com"
-                value={websiteURL}
-                onChange={(e) => setWebsiteURL(e.target.value)} // Allow manual editing
-              />
-            </div>
+        {/* <h2>Are you from 12.com?</h2>
+        <button type="button" onClick={handleCorrectButtonClick}>
+          Yes, that's correct!
+        </button>
+        <h3>If not, enter your company website URL:</h3>
+        <input
+          type="text"
+          value={websiteURL}
+          onChange={(e) => setWebsiteURL(e.target.value)}
+          placeholder="mywebsite.com"
+        /> */}
+        <div className="text-div">
+          <h2>Are you from 12.com?</h2>
+          <div>
+            <button
+              type="button"
+              className="correct-btn"
+              onClick={handleCorrectButtonClick}
+            >
+              Yes, that's correct!
+            </button>
           </div>
-
-          <div className="submit-div">
-            <button type="submit">Last step</button>
+          <h3>If not, please let us know your company website URL:</h3>
+          <div>
+            <input
+              type="text"
+              className="url-input"
+              placeholder="mywebsite.com"
+              value={websiteURL}
+              onChange={(e) => setWebsiteURL(e.target.value)} // Allow manual editing
+            />
           </div>
-          {errorMessage && (
-            <div className="errorMsg">
-              <i
-                className="fa fa-exclamation-circle"
-                style={{ marginRight: "10px" }}
-              ></i>
-              {errorMessage}
-            </div>
-          )}
         </div>
+        <div className="submit-div">
+          <button type="submit">Last step</button>
+        </div>
+        {errorMessage && (
+          <div className="errorMsg">
+            <i
+              className="fa fa-exclamation-circle"
+              style={{ marginRight: "10px" }}
+            ></i>
+            {errorMessage}
+          </div>
+        )}
       </div>
     </form>
   );
