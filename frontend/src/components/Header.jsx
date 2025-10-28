@@ -15,7 +15,7 @@ const Header = () => {
     setTimeout(() => setIsVisible(false), 500); // Matches the duration of the transition
   };
 
-   useEffect(() => {
+  useEffect(() => {
     var Tawk_API = Tawk_API || {};
     var Tawk_LoadStart = new Date();
 
@@ -46,22 +46,22 @@ const Header = () => {
       {/* Navbar */}
       {isNavbarVisible && (
         <nav className="navbar navbar-expand-sm">
- <a
-  className="navbar-brand"
-  href="https://adsyzygy.com/"
-  target="_blank"
-  rel="noopener noreferrer"
-  aria-label="Visit Adsyzygy homepage"
->
-  <img
-    src="https://adsyzygy.com/img/webp/logo.jpg"
-    alt="Adsyzygy Logo"
-    width="150"
-    height="50"
-    className="logo-img"
-    style={{ cursor: "pointer" }}
-  />
-</a>
+          <a
+            className="navbar-brand"
+            href="https://adsyzygy.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Visit Adsyzygy homepage"
+          >
+            <img
+              src="https://adsyzygy.com/img/webp/logo.jpg"
+              alt="Adsyzygy Logo"
+              width="150"
+              height="50"
+              className="logo-img"
+              style={{ cursor: "pointer" }}
+            />
+          </a>
 
           <div id="navbarNav">
             <ul className="navbar-nav">
@@ -72,6 +72,21 @@ const Header = () => {
               </li>
             </ul>
           </div>
+
+          <a
+            href="tel:+18136677184"
+            className="btn ms-auto"
+            style={{
+              backgroundColor: "#f0ad4e",
+              color: "#fff",
+              borderRadius: "25px",
+              fontWeight: "500",
+              padding: "8px 18px",
+              border: "none",
+            }}
+          >
+            📞 Call Us
+          </a>
         </nav>
       )}
     </>
